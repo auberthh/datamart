@@ -1,6 +1,6 @@
 """
 This is the code for the technical challenge for Datamart.
-
+Please refer to ..\notebooks\task_0.ipynb for more details
 Author: Auberth Hurtado
 """
 

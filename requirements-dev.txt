@@ -5,3 +5,5 @@ matplotlib
 ydata-profiling
 ipywidgets
 missingno
+seaborn
+
