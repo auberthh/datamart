@@ -6,4 +6,4 @@ ydata-profiling
 ipywidgets
 missingno
 seaborn
-
+scikit-learn

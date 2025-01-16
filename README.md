@@ -1,9 +1,15 @@
 # ds_test
 
 ## Tools used in this project
-* [hydra](https://hydra.cc/): Manage configuration files - [article](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)
-* [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
-* [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
+* python==3.12.8
+* pandas
+* numpy
+* matplotlib
+* ydata-profiling
+* ipywidgets
+* missingno
+* seaborn
+* scikit-learn
 
 
 ## Project Structure
@@ -11,34 +17,29 @@
 ```bash
 .
 ├── config                      
-│   ├── main.yaml                   # Main configuration file
-│   ├── model                       # Configurations for training model
-│   │   ├── model1.yaml             # First variation of parameters to train model
-│   │   └── model2.yaml             # Second variation of parameters to train model
-│   └── process                     # Configurations for processing data
-│       ├── process1.yaml           # First variation of parameters to process data
-│       └── process2.yaml           # Second variation of parameters to process data
+│   ├── main.yaml                 # Main configuration file
+│   ├── model                     # Configurations for training model
 ├── data            
-│   ├── final                       # data after training the model
-│   ├── processed                   # data after processing
-│   └── raw                         # raw data
-├── docs                            # documentation for your project
-├── .gitignore                      # ignore files that cannot commit to Git
-├── Makefile                        # store useful commands to set up the environment
-├── models                          # store models
-├── notebooks                       # store notebooks
-├── pyproject.toml                  # Configure black
+│   ├── final                     # data after training the model
+│   ├── processed                 # data after processing
+│   └── raw                       # raw data
+├── docs                          # documentation of the test
+├── .gitignore                    # ignore files that cannot commit to Git
+├── Makefile                      # store useful commands to set up the environment
+├── models                        # store model
+├── notebooks                     # store notebooks
+    ├── task_0.ipynb              # process data for task 0
+    ├── task_1.ipynb              # process data for task 1
+    ├── task_2.ipynb              # process data for task 2
+    ├── task_3.ipynb              # process data for task 3    
+    └── task_4.ipynb              # process data for task 4 
+├── pyproject.toml                # Configure black
+├── README.md                     # This file
+├── src                           # store source code
+    ├── __init__.py               # make src a Python module 
+    ├── task_0.py                 # source code requested for task_0
+    └── task_2                    # sql files for task 2
 
-├── README.md                       # describe your project
-├── src                             # store source code
-│   ├── __init__.py                 # make src a Python module 
-│   ├── process.py                  # process data before training model
-│   ├── train_model.py              # train model
-│   └── utils.py                    # store helper functions
-└── tests                           # store tests
-    ├── __init__.py                 # make tests a Python module 
-    ├── test_process.py             # test functions for process.py
-    └── test_train_model.py         # test functions for train_model.py
 ```
 
 ## Set up the environment
@@ -63,10 +64,7 @@ source venv/bin/activate
 ```bash
 pip install -r requirements-dev.txt
 ```
-- To install only production dependencies, run:
-```bash
-pip install -r requirements.txt
-```
+
 - To install a new package, run:
 ```bash
 pip install <package-name>
@@ -74,45 +72,11 @@ pip install <package-name>
 
 
 ## View and alter configurations
-To view the configurations associated with a Pythons script, run the following command:
-```bash
-python src/process.py --help
-```
-Output:
-```yaml
-process is powered by Hydra.
 
 == Configuration groups ==
 Compose your configuration from those groups (group=option)
 
-model: model1, model2
-process: process1, process2
+model: random_forest
 
 
-== Config ==
-Override anything in the config (foo.bar=value)
 
-process:
-  use_columns:
-  - col1
-  - col2
-model:
-  name: model1
-data:
-  raw: data/raw/sample.csv
-  processed: data/processed/processed.csv
-  final: data/final/final.csv
-```
-
-To alter the configurations associated with a Python script from the command line, run the following:
-```bash
-python src/process.py data.raw=sample2.csv
-```
-
-## Auto-generate API documentation
-
-To auto-generate API document for your project, run:
-
-```bash
-make docs
-```

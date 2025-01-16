@@ -1,9 +1,8 @@
 defaults:
-  - process: process1
-  - model: model1
+  - model: random_forest_model.pkl
   - _self_
 
 data:
-  raw: data/raw/sample.csv
-  processed: data/processed/processed.csv
-  final: data/final/final.csv
+  raw: data/raw/raw_sales_data.csv
+  processed: data/processed/cleaned_sales_data.csv
+  final: data/final/sales_data.csv
