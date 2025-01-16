@@ -4,3 +4,4 @@ numpy
 matplotlib
 ydata-profiling
 ipywidgets
+missingno
